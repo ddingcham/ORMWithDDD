@@ -14,8 +14,7 @@ public class Money {
 	}
 	
 	public Money add(Money added){
-		this.amount = this.amount.add(added.amount);
-		return this;
+		return new Money(this.amount.add(added.amount));
 	}
 
 	@Override

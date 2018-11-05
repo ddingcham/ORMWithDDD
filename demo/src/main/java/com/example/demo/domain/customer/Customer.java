@@ -1,12 +1,16 @@
 package com.example.demo.domain.customer;
 
-public class Customer {
+import com.example.demo.common.EntryPoint;
+import com.example.demo.common.Registrar;
+
+public class Customer extends EntryPoint {
 	private String customerNumber;
 	private String name;
 	private String address;
 	private long mileage;
 
 	public Customer(String customerNumber, String name, String address) {
+		super(customerNumber);
 		this.customerNumber = customerNumber;
 		this.name = name;
 		this.address = address;
@@ -34,5 +38,18 @@ public class Customer {
 	public long getMileage() {
 		return mileage;
 	}
+
+	public static Customer find(String customerName) {
+		// TODO Auto-generated method stub
+		return (Customer)Registrar.get(Customer.class, customerName);
+	}
+
+	@Override
+	public Customer persist() {
+		// TODO Auto-generated method stub
+		return (Customer)super.persist();
+	}
+	
+	
 
 }
