@@ -1,7 +1,5 @@
 package com.example.demo.common;
 
-import com.example.demo.domain.customer.Customer;
-
 public class EntryPoint {
 	private final String identity;
 	
@@ -11,10 +9,5 @@ public class EntryPoint {
 	
 	public String getIdentity() {
 		return identity;
-	}
-	
-	public EntryPoint persist() {
-		Registrar.add(this.getClass(), this);
-		return this;
 	}
 }

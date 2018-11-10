@@ -39,17 +39,4 @@ public class Customer extends EntryPoint {
 		return mileage;
 	}
 
-	public static Customer find(String customerName) {
-		// TODO Auto-generated method stub
-		return (Customer)Registrar.get(Customer.class, customerName);
-	}
-
-	@Override
-	public Customer persist() {
-		// TODO Auto-generated method stub
-		return (Customer)super.persist();
-	}
-	
-	
-
 }
