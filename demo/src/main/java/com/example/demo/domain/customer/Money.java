@@ -13,6 +13,10 @@ public class Money {
 		this(new BigDecimal(amount));
 	}
 	
+	public Money(double amount) {
+		this(new BigDecimal(amount));
+	}
+	
 	public Money add(Money added){
 		return new Money(this.amount.add(added.amount));
 	}
@@ -45,6 +49,21 @@ public class Money {
 	@Override
 	public String toString() {
 		return "Money [amount=" + amount + "]";
+	}
+
+	public boolean isGreaterThan(Money limitPrice) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public Money subtract(Money subtrahend) {
+		// TODO Auto-generated method stub
+		return new Money(this.amount.subtract(subtrahend.amount));
+	}
+
+	public Money multiply(int quantity) {
+		// TODO Auto-generated method stub
+		return new Money(this.amount.multiply(new BigDecimal(quantity)));
 	}
 	
 	

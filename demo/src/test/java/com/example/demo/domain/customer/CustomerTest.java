@@ -33,7 +33,7 @@ public class CustomerTest {
 		long price = 1000;
 		customer.purchase(price);
 		
-		assertEquals(price*0.01, anotherCustomer.getMileage(), 0.1);
+		assertEquals(new Money(price*0.01), anotherCustomer.getMileage());
 		assertEquals(0, anotherCustomer.getMileage());
 	}
 }
