@@ -50,4 +50,9 @@ public class Order extends EntryPoint{
 		return result;
 	}
 
+	public boolean isOrderedBy(Customer customer) {
+		// Repository에 의한 유일성과 추적성 보장
+		return this.customer == customer;
+	}
+
 }

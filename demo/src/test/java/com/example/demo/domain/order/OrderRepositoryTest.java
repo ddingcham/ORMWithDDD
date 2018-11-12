@@ -1,24 +1,22 @@
 package com.example.demo.domain.order;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import com.example.demo.common.Registrar;
 import com.example.demo.domain.customer.Customer;
-import com.example.demo.domain.customer.Money;
 import com.example.demo.domain.product.Product;
 import com.example.demo.domain.product.ProductRepository;
 
-public class OrderTest {
+public class OrderRepositoryTest {
 	private Customer customer;
 	private OrderRepository orderRepository;
 	private ProductRepository productRepository;
 	
 	@Before
-	protected void setUp() throws Exception {
-		// TODO Auto-generated method stub
+	public void setUp() {
 		Registrar.init();
 		orderRepository = new OrderRepository();
 		productRepository = new ProductRepository();
@@ -29,12 +27,15 @@ public class OrderTest {
 	}
 	
 	@Test
-	public void testOrderPrice() throws Exception {
-		Order order = customer.newOrder("CUST-01-ORDER-01")
-						.with("상품1", 10)
-						.with("상품2", 20);
-		orderRepository.save(order);
-		assertEquals(new Money(110000), order.getPrice());
+	public void testOrderCount() throws Exception {
+		orderRepository.save(customer.newOrder("CUST-01-ORDER-01")
+									.with("상품1", 5)
+									.with("상품2", 20)
+									.with("상품1", 5));
+		orderRepository.save(customer.newOrder("CUST-01-ORDER-02")
+									.with("상품1", 20)
+									.with("상품2", 5));
+		
+		assertEquals(2, orderRepository.findByCustomer(customer).size());		
 	}
-	
 }
