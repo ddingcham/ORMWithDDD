@@ -6,8 +6,8 @@
 
 ### 2. AGGREGATE와 REPOSITORY
 
+### Domain-Driven Design Essence
+
 ### 3. Dependency Injection과 Aspect_Oriented Programming
 
 ### 4. ORM과 투명한 영속성
-
-### Domain-Driven Design Essence
