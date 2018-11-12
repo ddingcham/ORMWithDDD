@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import com.example.demo.common.Registrar;
 import com.example.demo.domain.customer.Customer;
+import com.example.demo.domain.product.CollectionProductRepository;
 import com.example.demo.domain.product.Product;
 import com.example.demo.domain.product.ProductRepository;
 
@@ -19,7 +20,7 @@ public class OrderRepositoryTest {
 	public void setUp() {
 		Registrar.init();
 		orderRepository = new OrderRepository();
-		productRepository = new ProductRepository();
+		productRepository = new CollectionProductRepository();
 		productRepository.save(new Product("상품1", 1000));
 		productRepository.save(new Product("상품2", 5000));
 		
