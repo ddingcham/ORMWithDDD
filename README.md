@@ -17,4 +17,6 @@
 
 ### 4. ORM과 투명한 영속성
 
-
+### 5. 마지막으로 -> 은총알은 없음
+https://www.youtube.com/watch?v=26S4VFUWlJM
+https://jojoldu.tistory.com/346
