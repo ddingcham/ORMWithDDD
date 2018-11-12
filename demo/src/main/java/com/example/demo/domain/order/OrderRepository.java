@@ -13,6 +13,10 @@ public class OrderRepository {
 		// TODO Auto-generated method stub
 		Registrar.add(Order.class, order);
 	}
+	
+	public Order find(String identity) {
+		return (Order)Registrar.get(Order.class, identity);
+	}
 
 	public Set<Order> findByCustomer(Customer customer) {
 		// TODO Auto-generated method stub
@@ -30,5 +34,10 @@ public class OrderRepository {
 	@SuppressWarnings("unchecked")
 	public Set<Order> findAll() {
 		return new HashSet<Order>((Collection<Order>)Registrar.getAll(Order.class));
+	}
+
+	public Order delete(String identity) {
+		// TODO Auto-generated method stub
+		return (Order)Registrar.delete(Order.class, identity);
 	}
 }

@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.example.demo.domain.order.Order;
+
 public class Registrar {
 	private static Registrar soleInstance = new Registrar();
 	private Map<Class<?>,Map<String,EntryPoint>> entryPoints =
@@ -58,6 +60,18 @@ public class Registrar {
 				Collections.unmodifiableCollection(foundEntryPoints != null ?
 					entryPoints.get(entryPointClass).values() :
 					Collections.EMPTY_SET);
+	}
+
+	public static EntryPoint delete(Class<?> entryPointClass, String objectName) {
+		// TODO Auto-generated method stub
+		return soleInstance.deleteObj(entryPointClass, objectName);
+	}
+
+	private EntryPoint deleteObj(Class<?> entryPointClass, String objectName) {
+		// TODO Auto-generated method stub
+		Map<String,EntryPoint> theEntryPoint =
+				entryPoints.get(entryPointClass);
+		return theEntryPoint.remove(objectName);
 	}
 	
 }

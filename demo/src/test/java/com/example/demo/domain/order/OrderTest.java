@@ -1,6 +1,8 @@
 package com.example.demo.domain.order;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +19,7 @@ public class OrderTest {
 	private ProductRepository productRepository;
 	
 	@Before
-	protected void setUp() throws Exception {
+	public void setUp() throws Exception {
 		// TODO Auto-generated method stub
 		Registrar.init();
 		orderRepository = new OrderRepository();
@@ -37,4 +39,27 @@ public class OrderTest {
 		assertEquals(new Money(110000), order.getPrice());
 	}
 	
+	@Test
+	public void testOrderIdentical() throws Exception {
+		Order order = customer.newOrder("CUST-01-ORDER-01")
+							.with("상품1", 10)
+							.with("상품2", 20);
+		orderRepository.save(order);
+		
+		Order anotherOrder = orderRepository.find("CUST-01-ORDER-01");
+		assertEquals(order, anotherOrder);
+	}
+	
+	@Test
+	public void testDeleteOrder() throws Exception {
+		orderRepository.save(customer.newOrder("CUST-01-ORDER-01")
+								.with("상품1", 5)
+								.with("상품2", 20));
+		Order order = orderRepository.find("CUST-01-ORDER-01");
+		
+		orderRepository.delete("CUST-01-ORDER-01");
+		
+		assertNull(orderRepository.find("CUST-01-ORDER-01"));
+		assertNotNull(order);
+	}
 }
