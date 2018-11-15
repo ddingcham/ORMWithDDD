@@ -1,5 +1,6 @@
 package com.example.demo.domain.order;
 
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
@@ -7,7 +8,7 @@ import com.example.demo.domain.customer.Money;
 import com.example.demo.domain.product.Product;
 import com.example.demo.domain.product.ProductRepository;
 
-@Configurable(value="orderLineItem", preConstruction=true)
+@Configurable(value="orderLineItem", preConstruction=true, autowire=Autowire.BY_NAME)
 public class OrderLineItem {
 	
 	private Product product;
