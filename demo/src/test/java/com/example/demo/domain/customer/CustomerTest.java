@@ -5,19 +5,29 @@ import static org.junit.Assert.assertSame;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.common.Registrar;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class CustomerTest {
+	
+	@Autowired
+	private Registrar registrar;
+	@Autowired
+	private CustomerRepository customerRepository;
 	
 	@Before
 	public void setUp() {
-		Registrar.init();
+		registrar.init();
 	}
 	
 	@Test
 	public void testCustomerIdentical() {
-		CustomerRepository customerRepository = new CustomerRepository();
 		Customer customer = new Customer("CUST-01", "홍길동", "경기도 안양시");
 		customerRepository.save(customer);
 		Customer anotherCustomer = customerRepository.find("CUST-01");
@@ -36,4 +46,9 @@ public class CustomerTest {
 		assertEquals(new Money(price*0.01), anotherCustomer.getMileage());
 		assertEquals(0, anotherCustomer.getMileage());
 	}
+
+	public void setRegistrar(Registrar registrar) {
+		this.registrar = registrar;
+	}
+
 }

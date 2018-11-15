@@ -5,8 +5,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import com.example.demo.domain.order.Order;
 
+@Service
 public class EntryPointRegistrar implements Registrar {
 	private Map<Class<?>,Map<String,EntryPoint>> entryPoints =
 			new HashMap<Class<?>, Map<String, EntryPoint>>();

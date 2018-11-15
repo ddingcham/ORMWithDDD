@@ -6,6 +6,10 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.common.Registrar;
 import com.example.demo.domain.customer.Customer;
@@ -14,17 +18,23 @@ import com.example.demo.domain.product.CollectionProductRepository;
 import com.example.demo.domain.product.Product;
 import com.example.demo.domain.product.ProductRepository;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class OrderTest {
-	private Customer customer;
+	
+	@Autowired
+	private Registrar registrar;
+	@Autowired
 	private OrderRepository orderRepository;
+	@Autowired
 	private ProductRepository productRepository;
+	private Customer customer;
 	
 	@Before
 	public void setUp() throws Exception {
 		// TODO Auto-generated method stub
-		Registrar.init();
-		orderRepository = new OrderRepository();
-		productRepository = new CollectionProductRepository();
+		registrar.init();
+		
 		productRepository.save(new Product("상품1", 1000));
 		productRepository.save(new Product("상품2", 5000));
 		
