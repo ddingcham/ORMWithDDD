@@ -20,3 +20,4 @@
 ### 5. 마지막으로 -> 은총알은 없음
 https://www.youtube.com/watch?v=26S4VFUWlJM  
 https://jojoldu.tistory.com/346
+[도메인주도설계의본질_](https://www.slideshare.net/baejjae93/ss-27536729)
