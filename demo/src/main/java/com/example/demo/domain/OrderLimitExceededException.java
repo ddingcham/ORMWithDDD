@@ -1,4 +1,4 @@
-package com.example.demo.domain.order;
+package com.example.demo.domain;
 
 public class OrderLimitExceededException extends Exception {
 

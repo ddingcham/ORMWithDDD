@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.domain.order.Order;
+import com.example.demo.domain.Order;
 
 @Service
 public class EntryPointRegistrar implements Registrar {

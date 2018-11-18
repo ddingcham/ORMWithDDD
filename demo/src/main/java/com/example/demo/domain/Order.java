@@ -1,14 +1,27 @@
-package com.example.demo.domain.order;
+package com.example.demo.domain;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import com.example.demo.common.EntryPoint;
-import com.example.demo.domain.customer.Customer;
-import com.example.demo.domain.customer.Money;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-public class Order extends EntryPoint{
+import com.example.demo.common.EntryPoint;
+
+@Entity
+@Table(name="DemoOrder")
+public class Order {
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String orderId;
+	@OneToMany
 	private Set<OrderLineItem> lineItems = new HashSet<OrderLineItem>();
+	@ManyToOne
 	private Customer customer;
 
 	public static Order order(String orderId, Customer customer) {
@@ -16,8 +29,10 @@ public class Order extends EntryPoint{
 		return new Order(orderId, customer);
 	}
 	
+	public Order(){}
+	
 	Order(String orderId, Customer customer) {
-		super(orderId);
+		this.orderId = orderId;
 		this.customer = customer;
 	}
 	
@@ -53,6 +68,31 @@ public class Order extends EntryPoint{
 	public boolean isOrderedBy(Customer customer) {
 		// Repository에 의한 유일성과 추적성 보장
 		return this.customer == customer;
+	}
+
+	public Long getId() {
+		return id;
+	}
+	
+	String getOrderId() {
+		return orderId;
+	}
+	
+	public boolean equals(Object object) {
+		if (object == this) {
+			return true;
+		}
+		
+		if(!(object instanceof Order)) {
+			return false;
+		}
+		
+		final Order other = (Order)object;
+		return this.orderId.equals(other.getOrderId());
+	}
+	
+	public int hashCode() {
+		return this.orderId.hashCode();
 	}
 
 }

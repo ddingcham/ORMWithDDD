@@ -1,18 +1,35 @@
-package com.example.demo.domain.customer;
+package com.example.demo.domain;
 
-import com.example.demo.common.EntryPoint;
-import com.example.demo.common.Registrar;
-import com.example.demo.domain.order.Order;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-public class Customer extends EntryPoint {
+@Entity
+public class Customer {
+	@Id
+	@GeneratedValue
+	private Long id;
 	private String customerNumber;
 	private String name;
 	private String address;
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name="amount", column=@Column(name="mileage"))
+	})
 	private Money mileage;
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name="amount", column=@Column(name="limitPrice"))
+	})
 	private Money limitPrice;
+	
+	Customer(){}
 
 	public Customer(String customerNumber, String name, String address, long limitPrice) {
-		super(customerNumber);
 		this.customerNumber = customerNumber;
 		this.name = name;
 		this.address = address;

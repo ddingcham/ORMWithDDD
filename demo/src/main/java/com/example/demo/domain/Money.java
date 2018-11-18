@@ -1,9 +1,14 @@
-package com.example.demo.domain.customer;
+package com.example.demo.domain;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Money {
 	private BigDecimal amount;
+	
+	public Money(){}
 	
 	public Money(BigDecimal amount) {
 		this.amount = amount;
@@ -64,6 +69,14 @@ public class Money {
 	public Money multiply(int quantity) {
 		// TODO Auto-generated method stub
 		return new Money(this.amount.multiply(new BigDecimal(quantity)));
+	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
 	}
 	
 	

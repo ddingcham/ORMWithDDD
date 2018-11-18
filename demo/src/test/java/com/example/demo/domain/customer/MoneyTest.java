@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import com.example.demo.domain.Money;
+
 public class MoneyTest {
 
 	@Test

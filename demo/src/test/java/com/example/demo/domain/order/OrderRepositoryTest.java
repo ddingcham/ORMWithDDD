@@ -10,15 +10,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.common.Registrar;
-import com.example.demo.domain.customer.Customer;
-import com.example.demo.domain.product.Product;
-import com.example.demo.domain.product.ProductRepository;
+import com.example.demo.domain.Customer;
+import com.example.demo.domain.OrderRepository;
+import com.example.demo.domain.Product;
+import com.example.demo.domain.ProductRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class OrderRepositoryTest {
-	@Autowired
-	private Registrar registrar;
 	@Autowired
 	private OrderRepository orderRepository;
 	@Autowired
@@ -27,7 +26,6 @@ public class OrderRepositoryTest {
 	
 	@Before
 	public void setUp() {
-		registrar.init();
 		productRepository.save(new Product("상품1", 1000));
 		productRepository.save(new Product("상품2", 5000));
 		
