@@ -1,0 +1,22 @@
+# 예제 어플리케이션  
+#### 앨범과 앨범에 수록된 음악의 목록을 관리하는 웹사이트 개발  
+
+## 개발 순서  
+1. Domain Layer  
+   > 도메인에 관한 핵심적인 개념과 업무 규칙 표현  
+   
+2. Persistence Mechanism  
+   1) ENTITY 및 ENTITY ASSOCIATION 설정  
+   2) Persistence를 위한 Domain 외부 컴포넌트 개발  
+   
+3. Application Layer = Service Layer  
+  > 도메인 레이어에 요청 위임  
+  > 어플리케이션의 흐름 제어  
+  
+4. User Interface  
+  1) Controller  
+    > 사용자 요청 처리
+  2) Page  
+    > 응답 화면 구성  
+    
+## 
